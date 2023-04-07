@@ -23,6 +23,10 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 # Display the table on the page
 streamlit.dataframe(fruits_to_show)
 
+# ######################################
+# Fruityvice API
+# ######################################
+
 # New Section to display fruityvice api response
 streamlit.header('Fruityvice Fruit Advice!')
 
@@ -36,6 +40,13 @@ fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 
 # Output it the screen as a table
 streamlit.dataframe(fruityvice_normalized)
+
+# Don't run anything past here while we troubleshoot
+streamlit.stop()
+
+# ######################################
+# Snowflake connector
+# ######################################
 
 # Query our Snowflake Trial Account Metadata
 my_cnx = snowflake.connector.connect(**streamlit.secrets['snowflake'])
